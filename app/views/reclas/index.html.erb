@@ -1,0 +1,29 @@
+<h1>Reclamos<h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th class="active">Reclamo</th>
+      <th class="active">Tienda</th>
+      <th class="active">Cliente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reclas.each do |recla| %>
+      <tr>
+        <td><%= recla.reclamo %></td>
+        <td><%= recla.tienda %></td>
+        <td><%= recla.cliente %></td>
+        <td><%= link_to 'Show', recla %></td>
+        <td><%= link_to 'Edit', edit_recla_path(recla) %></td>
+        <td><%= link_to 'Destroy', recla, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recla', new_recla_path %>

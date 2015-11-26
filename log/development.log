@@ -1,0 +1,2660 @@
+  [1m[36m (102.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (76.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateClientes (20151125101836)
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "clientes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "rut" varchar(255), "nombre" varchar(255), "apellido" varchar(255), "telefono" integer, "correo" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20151125101836"]]
+  [1m[35m (104.0ms)[0m  commit transaction
+Migrating to CreateReclas (20151125101853)
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "reclas" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "reclamo" varchar(255), "tienda" varchar(255), "cliente_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.0ms)[0m  [1mCREATE  INDEX "index_reclas_on_cliente_id" ON "reclas" ("cliente_id")[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125101853"]]
+  [1m[36m (99.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateInstitucions (20151125101947)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "institucions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tienda" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125101947"]]
+  [1m[36m (143.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsuarios (20151125102419)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "usuarios" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_usuarios_on_email" ON "usuarios" ("email")[0m
+  [1m[35m (1.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_usuarios_on_reset_password_token" ON "usuarios" ("reset_password_token")[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125102419"]]
+  [1m[36m (164.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+[0m
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:29:44 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/railties-4.1.8/lib/rails/templates/rails/welcome/index.html.erb (25.0ms)
+Completed 200 OK in 343ms (Views: 291.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:30:42 -0300
+
+SyntaxError (C:/Users/Leslie Baeza/reclamo23/config/routes.rb:10: syntax error, unexpected tSTRING_BEG, expecting keyword_end
+  root :to 'inicio#index'
+            ^):
+  config/routes.rb:10: syntax error, unexpected tSTRING_BEG, expecting keyword_end
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (61.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:31:18 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 13572ms
+
+ActionView::Template::Error (TypeError: El objeto no acepta esta propiedad o método
+  (in C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/turbolinks-2.5.3/lib/assets/javascripts/turbolinks.js.coffee)):
+    3: <head>
+    4:   <title>Reclamo23</title>
+    5:   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    6:   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    7:   <%= csrf_meta_tags %>
+    8:   <!-- Latest compiled and minified CSS -->
+    9: <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  app/views/layouts/application.html.erb:6:in `_app_views_layouts_application_html_erb___248174018_38087592'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:31:52 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 69ms (Views: 68.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:31:53 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:31:53 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:31:53 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:31:53 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:31:53 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:31:53 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:32:25 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 75ms (Views: 73.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:32:25 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:32:25 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:32:25 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:32:25 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:33:05 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 66ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:05 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:05 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:05 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:05 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:05 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:05 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:33:08 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:08 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:08 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:08 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:08 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:08 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:08 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:33:17 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 45ms (Views: 44.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:18 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:18 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:18 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:18 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:18 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:33:18 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:33:24 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:34:49 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 81ms (Views: 79.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:34:49 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:34:49 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:34:49 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:34:49 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:34:49 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:34:49 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:36:05 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (46.0ms)
+Completed 500 Internal Server Error in 118ms
+
+ActionView::Template::Error (undefined local variable or method `tiendas_path' for #<#<Class:0x489f1b0>:0x2cbae20>):
+    16:       <ul class="nav navbar-nav">
+    17:         <li><a href="<%= clientes_path %>">Clientes</a></li>
+    18:         <li><a href="<%= reclas_path %>">Reclamos</a></li>
+    19:         <li><a href="<%= tiendas_path %>">tienda</a></li>
+    20:       </ul>
+    21:         </li>
+    22:       </ul>
+  app/views/shared/_navbar.html.erb:19:in `_app_views_shared__navbar_html_erb__490354936_38626728'
+  app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb___248174018_23598408'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:36:25 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (7.0ms)
+Completed 200 OK in 68ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:25 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:25 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:25 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:25 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:25 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:25 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:36:42 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 52ms (Views: 51.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:42 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:42 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:36:42 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 07:37:09 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 50ms (Views: 50.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:09 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:09 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:09 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:09 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:09 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:09 -0300
+
+
+Started GET "/usuarios/sign_in" for 127.0.0.1 at 2015-11-25 07:37:12 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (365.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 490ms (Views: 442.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/usuarios/sign_in" for 127.0.0.1 at 2015-11-25 07:37:13 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 74ms (Views: 72.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:13 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:13 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:13 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:13 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:13 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:13 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 07:37:16 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 68ms (Views: 62.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:16 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:16 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:16 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:16 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:16 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:16 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 07:37:17 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (0.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  Rendered reclas/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 114ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:17 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:17 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:17 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:17 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:17 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:17 -0300
+
+
+Started GET "/institucions" for 127.0.0.1 at 2015-11-25 07:37:18 -0300
+Processing by InstitucionsController#index as HTML
+  [1m[35mInstitucion Load (0.0ms)[0m  SELECT "institucions".* FROM "institucions"
+  Rendered institucions/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 49ms (Views: 46.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:18 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:18 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:18 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:18 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:18 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:37:18 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReclaInstitucions (20151125104551)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (24.0ms)[0m  [1mCREATE TABLE "recla_institucions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "recla_id" integer, "institucion_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mCREATE  INDEX "index_recla_institucions_on_recla_id" ON "recla_institucions" ("recla_id")[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_recla_institucions_on_recla_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_recla_institucions_on_recla_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1mCREATE  INDEX "index_recla_institucions_on_institucion_id" ON "recla_institucions" ("institucion_id")[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20151125104551"]]
+  [1m[36m (140.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_recla_institucions_on_institucion_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_recla_institucions_on_institucion_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_recla_institucions_on_recla_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_recla_institucions_on_recla_id' AND type='index'
+
+  [1m[36m (0.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reclas_on_cliente_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_reset_password_token' AND type='index'
+
+  [1m[36m (1.0ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_usuarios_on_email' AND type='index'
+[0m
+
+
+Started GET "/institucions" for 127.0.0.1 at 2015-11-25 07:46:59 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by InstitucionsController#index as HTML
+  [1m[35mInstitucion Load (0.0ms)[0m  SELECT "institucions".* FROM "institucions"
+  Rendered institucions/index.html.erb within layouts/application (15.0ms)
+  Rendered shared/_navbar.html.erb (6.0ms)
+Completed 200 OK in 447ms (Views: 415.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:00 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:00 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:00 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:00 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:00 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:00 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:00 -0300
+
+
+Started GET "/recla_institucions" for 127.0.0.1 at 2015-11-25 07:47:02 -0300
+Processing by ReclaInstitucionsController#index as HTML
+  [1m[36mReclaInstitucion Load (0.0ms)[0m  [1mSELECT "recla_institucions".* FROM "recla_institucions"[0m
+  Rendered recla_institucions/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 63ms (Views: 51.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:02 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:02 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:02 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:02 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:02 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:02 -0300
+
+
+Started GET "/recla_institucions/new" for 127.0.0.1 at 2015-11-25 07:47:05 -0300
+Processing by ReclaInstitucionsController#new as HTML
+  Rendered recla_institucions/_form.html.erb (58.0ms)
+  Rendered recla_institucions/new.html.erb within layouts/application (61.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 117ms (Views: 113.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:06 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:06 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:06 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:06 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:06 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:06 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.0ms)
+Completed 200 OK in 87ms (Views: 81.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 07:47:10 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 20:55:21 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (36.1ms)
+  Rendered shared/_navbar.html.erb (13.0ms)
+Completed 200 OK in 1370ms (Views: 1290.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 20:55:23 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 20:55:23 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 20:55:23 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 20:55:23 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 20:55:23 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 20:55:23 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 20:55:23 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 270ms (Views: 253.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:18:58 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:23:35 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 222ms (Views: 220.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:23:36 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:23:36 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:23:36 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:23:36 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:23:36 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:23:36 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:23:36 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 269ms (Views: 267.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:24:52 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:25:46 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 166ms (Views: 164.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:25:47 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:25:47 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:25:47 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:25:47 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:25:47 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:25:47 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:25:47 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (2.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 274ms (Views: 270.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:36 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:26:56 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 250ms (Views: 248.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:57 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:57 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:57 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:57 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:57 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:57 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:26:57 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:34:39 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 216ms (Views: 215.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:34:39 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:34:39 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:34:40 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:34:40 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:34:40 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:34:40 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:34:40 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 203ms (Views: 200.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:35:31 -0300
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 233ms (Views: 232.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:40 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 21:48:52 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (1.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (7.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 269ms (Views: 241.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:53 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:53 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:53 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:53 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:53 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:53 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:48:53 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 21:49:02 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (1.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 202ms (Views: 199.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:49:02 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:49:02 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:49:02 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:49:02 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:49:02 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:49:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:49:03 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (3.0ms)
+Completed 200 OK in 225ms (Views: 222.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:07 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (2.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  Rendered reclas/index.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 341ms (Views: 230.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:17 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (0.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (2.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 212ms (Views: 211.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 21:50:21 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 22:09:09 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 218ms (Views: 216.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:10 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:10 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:10 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:10 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:10 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:10 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:10 -0300
+
+
+Started GET "/clientes/new" for 127.0.0.1 at 2015-11-25 22:09:15 -0300
+Processing by ClientesController#new as HTML
+  Rendered clientes/_form.html.erb (803.2ms)
+  Rendered clientes/new.html.erb within layouts/application (840.2ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 1032ms (Views: 1025.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:16 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:17 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:17 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:17 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:17 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:17 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:09:17 -0300
+
+
+Started POST "/clientes" for 127.0.0.1 at 2015-11-25 22:10:14 -0300
+Processing by ClientesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw=", "cliente"=>{"rut"=>"16374529-1", "nombre"=>"leslies", "apellido"=>"baeza", "telefono"=>"27451504", "correo"=>"1"}, "commit"=>"Create Cliente"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (26.0ms)[0m  [1mINSERT INTO "clientes" ("apellido", "correo", "created_at", "nombre", "rut", "telefono", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["apellido", "baeza"], ["correo", 1], ["created_at", "2015-11-26 01:10:14.914662"], ["nombre", "leslies"], ["rut", "16374529-1"], ["telefono", 27451504], ["updated_at", "2015-11-26 01:10:14.914662"]]
+  [1m[35m (140.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/clientes/1
+Completed 302 Found in 226ms (ActiveRecord: 166.2ms)
+
+
+Started GET "/clientes/1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+Processing by ClientesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCliente Load (1.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered clientes/show.html.erb within layouts/application (2.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 259ms (Views: 248.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:15 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 22:10:28 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (1.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 169ms (Views: 167.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:28 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:28 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:28 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:28 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:28 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:28 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:29 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  Rendered reclas/index.html.erb within layouts/application (6.0ms)
+  Rendered shared/_navbar.html.erb (5.0ms)
+Completed 200 OK in 319ms (Views: 315.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:39 -0300
+
+
+Started GET "/reclas/new" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+Processing by ReclasController#new as HTML
+  Rendered reclas/_form.html.erb (21.0ms)
+  Rendered reclas/new.html.erb within layouts/application (60.1ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 302ms (Views: 295.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:10:42 -0300
+
+
+Started POST "/reclas" for 127.0.0.1 at 2015-11-25 22:11:04 -0300
+Processing by ReclasController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw=", "recla"=>{"reclamo"=>"mala atencion", "tienda"=>"la polar", "cliente_id"=>"16374529-1"}, "commit"=>"Create Recla"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "reclas" ("cliente_id", "created_at", "reclamo", "tienda", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["cliente_id", 16374529], ["created_at", "2015-11-26 01:11:04.136925"], ["reclamo", "mala atencion"], ["tienda", "la polar"], ["updated_at", "2015-11-26 01:11:04.136925"]]
+  [1m[35m (57.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/reclas/1
+Completed 302 Found in 75ms (ActiveRecord: 62.1ms)
+
+
+Started GET "/reclas/1" for 127.0.0.1 at 2015-11-25 22:11:04 -0300
+Processing by ReclasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecla Load (2.0ms)[0m  [1mSELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 16374529]]
+  Rendered reclas/show.html.erb within layouts/application (424.6ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 827ms (Views: 812.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:05 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:05 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:05 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:05 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:05 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:05 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:05 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:11:08 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 16374529]]
+  Rendered reclas/index.html.erb within layouts/application (12.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 345ms (Views: 338.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:08 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:08 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:08 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:08 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:08 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:08 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:09 -0300
+
+
+Started GET "/reclas/1/edit" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+Processing by ReclasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered reclas/_form.html.erb (14.0ms)
+  Rendered reclas/edit.html.erb within layouts/application (31.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 366ms (Views: 356.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:21 -0300
+
+
+Started PATCH "/reclas/1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+Processing by ReclasController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw=", "recla"=>{"reclamo"=>"mala atencion", "tienda"=>"la polar", "cliente_id"=>"leslies"}, "commit"=>"Update Recla", "id"=>"1"}
+  [1m[35mRecla Load (0.0ms)[0m  SELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (19.0ms)[0m  UPDATE "reclas" SET "cliente_id" = ?, "updated_at" = ? WHERE "reclas"."id" = 1  [["cliente_id", 0], ["updated_at", "2015-11-26 01:11:37.377730"]]
+  [1m[36m (75.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/reclas/1
+Completed 302 Found in 133ms (ActiveRecord: 94.1ms)
+
+
+Started GET "/reclas/1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+Processing by ReclasController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecla Load (1.0ms)[0m  SELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1[0m  [["id", 0]]
+  Rendered reclas/show.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 172ms (Views: 168.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:37 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:38 -0300
+
+
+Started GET "/reclas/1/edit" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+Processing by ReclasController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mRecla Load (1.0ms)[0m  SELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered reclas/_form.html.erb (9.0ms)
+  Rendered reclas/edit.html.erb within layouts/application (17.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 278ms (Views: 267.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:42 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered reclas/index.html.erb within layouts/application (12.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 283ms (Views: 279.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:44 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 22:11:48 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (0.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 200ms (Views: 199.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:49 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:49 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:49 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:49 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:49 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:49 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:11:49 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (1.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (7.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 184ms (Views: 182.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:30 -0300
+
+
+Started GET "/institucions" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+Processing by InstitucionsController#index as HTML
+  [1m[36mInstitucion Load (2.0ms)[0m  [1mSELECT "institucions".* FROM "institucions"[0m
+  Rendered institucions/index.html.erb within layouts/application (13.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 342ms (Views: 265.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:37 -0300
+
+
+Started GET "/institucions/new" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+Processing by InstitucionsController#new as HTML
+  Rendered institucions/_form.html.erb (13.0ms)
+  Rendered institucions/new.html.erb within layouts/application (36.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 257ms (Views: 251.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:41 -0300
+
+
+Started POST "/institucions" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+Processing by InstitucionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw=", "institucion"=>{"tienda"=>"la polar"}, "commit"=>"Create Institucion"}
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "institucions" ("created_at", "tienda", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2015-11-26 01:17:47.283722"], ["tienda", "la polar"], ["updated_at", "2015-11-26 01:17:47.283722"]]
+  [1m[35m (77.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/institucions/1
+Completed 302 Found in 100ms (ActiveRecord: 84.1ms)
+
+
+Started GET "/institucions/1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+Processing by InstitucionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInstitucion Load (1.0ms)[0m  [1mSELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered institucions/show.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 314ms (Views: 305.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:47 -0300
+
+
+Started GET "/institucions" for 127.0.0.1 at 2015-11-25 22:17:51 -0300
+Processing by InstitucionsController#index as HTML
+  [1m[35mInstitucion Load (1.0ms)[0m  SELECT "institucions".* FROM "institucions"
+  Rendered institucions/index.html.erb within layouts/application (7.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 235ms (Views: 231.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:52 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:52 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:52 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:52 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:52 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:52 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:52 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:17:57 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered reclas/index.html.erb within layouts/application (12.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 590ms (Views: 584.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:58 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:58 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:58 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:58 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:58 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:58 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:17:58 -0300
+
+
+Started GET "/recla_institucions" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+Processing by ReclaInstitucionsController#index as HTML
+  [1m[36mReclaInstitucion Load (1.0ms)[0m  [1mSELECT "recla_institucions".* FROM "recla_institucions"[0m
+  Rendered recla_institucions/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 280ms (Views: 247.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:03 -0300
+
+
+Started GET "/recla_institucions/new" for 127.0.0.1 at 2015-11-25 22:18:10 -0300
+Processing by ReclaInstitucionsController#new as HTML
+  Rendered recla_institucions/_form.html.erb (19.0ms)
+  Rendered recla_institucions/new.html.erb within layouts/application (64.1ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 302ms (Views: 296.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:11 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:11 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:11 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:11 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:11 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:11 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:11 -0300
+
+
+Started POST "/recla_institucions" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+Processing by ReclaInstitucionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw=", "recla_institucion"=>{"recla_id"=>"mala atencion", "institucion_id"=>"la polar"}, "commit"=>"Create Recla institucion"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "recla_institucions" ("created_at", "institucion_id", "recla_id", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-26 01:18:21.299195"], ["institucion_id", 0], ["recla_id", 0], ["updated_at", "2015-11-26 01:18:21.299195"]]
+  [1m[35m (98.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/recla_institucions/1
+Completed 302 Found in 168ms (ActiveRecord: 103.2ms)
+
+
+Started GET "/recla_institucions/1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+Processing by ReclaInstitucionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mReclaInstitucion Load (0.0ms)[0m  [1mSELECT  "recla_institucions".* FROM "recla_institucions"  WHERE "recla_institucions"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mRecla Load (0.0ms)[0m  SELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mInstitucion Load (0.0ms)[0m  [1mSELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1[0m  [["id", 0]]
+  Rendered recla_institucions/show.html.erb within layouts/application (13.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 236ms (Views: 232.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:21 -0300
+
+
+Started GET "/recla_institucions" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+Processing by ReclaInstitucionsController#index as HTML
+  [1m[35mReclaInstitucion Load (0.0ms)[0m  SELECT "recla_institucions".* FROM "recla_institucions"
+  [1m[36mRecla Load (0.0ms)[0m  [1mSELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mInstitucion Load (0.0ms)[0m  SELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered recla_institucions/index.html.erb within layouts/application (9.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 206ms (Views: 205.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:18:27 -0300
+
+
+Started GET "/recla_institucions" for 127.0.0.1 at 2015-11-25 22:20:35 -0300
+Processing by ReclaInstitucionsController#index as HTML
+  [1m[36mReclaInstitucion Load (1.0ms)[0m  [1mSELECT "recla_institucions".* FROM "recla_institucions"[0m
+  [1m[35mRecla Load (0.0ms)[0m  SELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mInstitucion Load (1.0ms)[0m  [1mSELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1[0m  [["id", 0]]
+  Rendered recla_institucions/index.html.erb within layouts/application (25.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 333ms (Views: 327.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:20:36 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:20:36 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:20:36 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:20:36 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:20:36 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:20:36 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:20:36 -0300
+
+
+Started GET "/recla_institucions" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+Processing by ReclaInstitucionsController#index as HTML
+  [1m[35mReclaInstitucion Load (0.0ms)[0m  SELECT "recla_institucions".* FROM "recla_institucions"
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mInstitucion Load (1.0ms)[0m  SELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered recla_institucions/index.html.erb within layouts/application (10.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 171ms (Views: 168.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:12 -0300
+
+
+Started GET "/recla_institucions/new" for 127.0.0.1 at 2015-11-25 22:21:18 -0300
+Processing by ReclaInstitucionsController#new as HTML
+  Rendered recla_institucions/_form.html.erb (7.0ms)
+  Rendered recla_institucions/new.html.erb within layouts/application (13.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 226ms (Views: 223.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:18 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:18 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:18 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:18 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:19 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:19 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:19 -0300
+
+
+Started POST "/recla_institucions" for 127.0.0.1 at 2015-11-25 22:21:28 -0300
+Processing by ReclaInstitucionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw=", "recla_institucion"=>{"recla_id"=>"mala atencion", "institucion_id"=>"la polar"}, "commit"=>"Create Recla institucion"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.0ms)[0m  INSERT INTO "recla_institucions" ("created_at", "institucion_id", "recla_id", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2015-11-26 01:21:28.725054"], ["institucion_id", 0], ["recla_id", 0], ["updated_at", "2015-11-26 01:21:28.725054"]]
+  [1m[36m (90.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/recla_institucions/2
+Completed 302 Found in 146ms (ActiveRecord: 95.1ms)
+
+
+Started GET "/recla_institucions/2" for 127.0.0.1 at 2015-11-25 22:21:28 -0300
+Processing by ReclaInstitucionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mReclaInstitucion Load (1.0ms)[0m  SELECT  "recla_institucions".* FROM "recla_institucions"  WHERE "recla_institucions"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mInstitucion Load (1.0ms)[0m  SELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered recla_institucions/show.html.erb within layouts/application (16.0ms)
+  Rendered shared/_navbar.html.erb (3.0ms)
+Completed 200 OK in 471ms (Views: 461.7ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:29 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:29 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:29 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:29 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:29 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:29 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:29 -0300
+
+
+Started GET "/recla_institucions/2/edit" for 127.0.0.1 at 2015-11-25 22:21:32 -0300
+Processing by ReclaInstitucionsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mReclaInstitucion Load (0.0ms)[0m  [1mSELECT  "recla_institucions".* FROM "recla_institucions"  WHERE "recla_institucions"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered recla_institucions/_form.html.erb (5.0ms)
+  Rendered recla_institucions/edit.html.erb within layouts/application (12.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 253ms (Views: 248.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:32 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:32 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:32 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:33 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:33 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:33 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:33 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 22:21:39 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (1.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (12.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 509ms (Views: 502.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:40 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:40 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:40 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:40 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:40 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:40 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:40 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:21:44 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (0.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered reclas/index.html.erb within layouts/application (18.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 584ms (Views: 580.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:45 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:45 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:45 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:45 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:45 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:21:45 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (0.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (0.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered reclas/index.html.erb within layouts/application (9.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 214ms (Views: 212.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:23:34 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:24:05 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (0.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered reclas/index.html.erb within layouts/application (11.0ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 245ms (Views: 242.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:06 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:06 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:06 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:06 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:06 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:06 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:06 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:24:30 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (1.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered reclas/index.html.erb within layouts/application (7.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 214ms (Views: 210.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:31 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:31 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:31 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:31 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:31 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:31 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:24:31 -0300
+
+
+Started GET "/usuarios/sign_in" for 127.0.0.1 at 2015-11-25 22:37:12 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (168.2ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 499ms (Views: 406.6ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:13 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:13 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:13 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:13 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:13 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:13 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:13 -0300
+
+
+Started GET "/usuarios/sign_up" for 127.0.0.1 at 2015-11-25 22:37:17 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (12.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 208ms (Views: 204.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:18 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:18 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:18 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:18 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:18 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:18 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:18 -0300
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2015-11-25 22:37:43 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw=", "usuario"=>{"email"=>"lesliesbc@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUsuario Exists (1.0ms)[0m  SELECT  1 AS one FROM "usuarios"  WHERE "usuarios"."email" = 'lesliesbc@gmail.com' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (23.0ms)[0m  [1mINSERT INTO "usuarios" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-26 01:37:44.419547"], ["email", "lesliesbc@gmail.com"], ["encrypted_password", "$2a$10$jBe7sFX8fy4ywye9qRUAJOXjXYPx/qPOXdG3zq8y7ftexz/HvB63C"], ["updated_at", "2015-11-26 01:37:44.419547"]]
+  [1m[35m (55.1ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[35mSQL (9.0ms)[0m  UPDATE "usuarios" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "usuarios"."id" = 1  [["current_sign_in_at", "2015-11-26 01:37:44.512679"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2015-11-26 01:37:44.512679"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-11-26 01:37:44.517685"]]
+  [1m[36m (72.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 980ms (ActiveRecord: 160.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 22:37:44 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (105.2ms)
+Completed 200 OK in 287ms (Views: 284.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:45 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:45 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:45 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:45 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:45 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:45 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:37:45 -0300
+
+
+Started GET "/usuarios/sign_out" for 127.0.0.1 at 2015-11-25 22:37:53 -0300
+
+ActionController::RoutingError (No route matches [GET] "/usuarios/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.5) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (11.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (26.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (375.6ms)
+
+
+Started GET "/usuarios/edit.1" for 127.0.0.1 at 2015-11-25 22:38:10 -0300
+Processing by Devise::RegistrationsController#edit as 
+  [1m[36mUsuario Load (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1[0m
+  Rendered devise/registrations/edit.html.erb within layouts/application (10.0ms)
+  Rendered shared/_navbar.html.erb (3.0ms)
+Completed 200 OK in 245ms (Views: 241.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:11 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:11 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:11 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:11 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:11 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:11 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:11 -0300
+
+
+Started DELETE "/usuarios" for 127.0.0.1 at 2015-11-25 22:38:18 -0300
+Processing by Devise::RegistrationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"H4/k7ifgXZrX4HPwNHoxjU66598EwUGYrU0a/QqKeqw="}
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 1  ORDER BY "usuarios"."id" ASC LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (7.0ms)[0m  DELETE FROM "usuarios" WHERE "usuarios"."id" = ?  [["id", 1]]
+  [1m[36m (49.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 136ms (ActiveRecord: 57.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 22:38:18 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 196ms (Views: 195.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:19 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:19 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:19 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:19 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:19 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:19 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:19 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+Processing by ClientesController#index as HTML
+  [1m[35mCliente Load (1.0ms)[0m  SELECT "clientes".* FROM "clientes"
+  Rendered clientes/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 221ms (Views: 219.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:27 -0300
+
+
+Started GET "/usuarios/sign_up" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (17.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 268ms (Views: 264.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:33 -0300
+
+
+Started POST "/usuarios" for 127.0.0.1 at 2015-11-25 22:38:47 -0300
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YRWJCyYEUEZGaGaW+GwEhN2yZrKnDJ4ja+1M9PLpP/c=", "usuario"=>{"email"=>"lesliesbc@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mUsuario Exists (1.0ms)[0m  SELECT  1 AS one FROM "usuarios"  WHERE "usuarios"."email" = 'lesliesbc@gmail.com' LIMIT 1
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "usuarios" ("created_at", "email", "encrypted_password", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2015-11-26 01:38:47.503501"], ["email", "lesliesbc@gmail.com"], ["encrypted_password", "$2a$10$KeU0aDe9ezGPSl67jZMs2OK0GbU8N4kZ0kl.WSJRFLG6tWH/zHS0W"], ["updated_at", "2015-11-26 01:38:47.503501"]]
+  [1m[35m (59.1ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `current_sign_in_ip`
+Binary data inserted for `string` type on column `last_sign_in_ip`
+  [1m[35mSQL (11.0ms)[0m  UPDATE "usuarios" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_at" = ?, "last_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "usuarios"."id" = 2  [["current_sign_in_at", "2015-11-26 01:38:47.579613"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_at", "2015-11-26 01:38:47.579613"], ["last_sign_in_ip", "127.0.0.1"], ["sign_in_count", 1], ["updated_at", "2015-11-26 01:38:47.586625"]]
+  [1m[36m (73.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 311ms (ActiveRecord: 150.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 22:38:47 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 2  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (5.0ms)
+Completed 200 OK in 214ms (Views: 212.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:48 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:48 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:48 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:48 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:48 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:48 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:48 -0300
+
+
+Started GET "/clientes" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+Processing by ClientesController#index as HTML
+  [1m[36mCliente Load (1.0ms)[0m  [1mSELECT "clientes".* FROM "clientes"[0m
+  Rendered clientes/index.html.erb within layouts/application (6.0ms)
+  [1m[35mUsuario Load (0.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 2  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 242ms (Views: 239.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:51 -0300
+
+
+Started GET "/reclas" for 127.0.0.1 at 2015-11-25 22:38:54 -0300
+Processing by ReclasController#index as HTML
+  [1m[36mRecla Load (2.0ms)[0m  [1mSELECT "reclas".* FROM "reclas"[0m
+  [1m[35mCliente Load (1.0ms)[0m  SELECT  "clientes".* FROM "clientes"  WHERE "clientes"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered reclas/index.html.erb within layouts/application (18.0ms)
+  [1m[36mUsuario Load (1.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 2  ORDER BY "usuarios"."id" ASC LIMIT 1[0m
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 317ms (Views: 308.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:55 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:55 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:55 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:55 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:55 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:55 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:55 -0300
+
+
+Started GET "/institucions" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+Processing by InstitucionsController#index as HTML
+  [1m[35mInstitucion Load (1.0ms)[0m  SELECT "institucions".* FROM "institucions"
+  Rendered institucions/index.html.erb within layouts/application (4.0ms)
+  [1m[36mUsuario Load (0.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 2  ORDER BY "usuarios"."id" ASC LIMIT 1[0m
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 212ms (Views: 209.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:38:59 -0300
+
+
+Started GET "/recla_institucions" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+Processing by ReclaInstitucionsController#index as HTML
+  [1m[35mReclaInstitucion Load (1.0ms)[0m  SELECT "recla_institucions".* FROM "recla_institucions"
+  [1m[36mRecla Load (0.0ms)[0m  [1mSELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mInstitucion Load (1.0ms)[0m  SELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1  [["id", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "reclas".* FROM "reclas"  WHERE "reclas"."id" = ? LIMIT 1[0m  [["id", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "institucions".* FROM "institucions"  WHERE "institucions"."id" = ? LIMIT 1  [["id", 0]]
+  Rendered recla_institucions/index.html.erb within layouts/application (13.0ms)
+  [1m[36mUsuario Load (1.0ms)[0m  [1mSELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 2  ORDER BY "usuarios"."id" ASC LIMIT 1[0m
+  Rendered shared/_navbar.html.erb (4.0ms)
+Completed 200 OK in 220ms (Views: 214.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:39:03 -0300
+
+
+Started GET "/usuarios/sign_out" for 127.0.0.1 at 2015-11-25 22:39:30 -0300
+
+ActionController::RoutingError (No route matches [GET] "/usuarios/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.5) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (10.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (256.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-11-25 22:40:19 -0300
+Processing by InicioController#index as HTML
+  Rendered inicio/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUsuario Load (1.0ms)[0m  SELECT  "usuarios".* FROM "usuarios"  WHERE "usuarios"."id" = 2  ORDER BY "usuarios"."id" ASC LIMIT 1
+  Rendered shared/_navbar.html.erb (82.1ms)
+Completed 200 OK in 262ms (Views: 255.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/clientes.css?body=1" for 127.0.0.1 at 2015-11-25 22:40:20 -0300
+
+
+Started GET "/assets/inicio.css?body=1" for 127.0.0.1 at 2015-11-25 22:40:20 -0300
+
+
+Started GET "/assets/institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:40:20 -0300
+
+
+Started GET "/assets/recla_institucions.css?body=1" for 127.0.0.1 at 2015-11-25 22:40:20 -0300
+
+
+Started GET "/assets/reclas.css?body=1" for 127.0.0.1 at 2015-11-25 22:40:20 -0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2015-11-25 22:40:20 -0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2015-11-25 22:40:20 -0300
+
+
+Started GET "/usuarios/sign_out" for 127.0.0.1 at 2015-11-25 22:40:24 -0300
+
+ActionController::RoutingError (No route matches [GET] "/usuarios/sign_out"):
+  actionpack (4.1.8) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.1.8) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.1.8) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.1.8) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.1.8) lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  actionpack (4.1.8) lib/action_dispatch/middleware/static.rb:84:in `call'
+  rack (1.5.5) lib/rack/sendfile.rb:112:in `call'
+  railties (4.1.8) lib/rails/engine.rb:514:in `call'
+  railties (4.1.8) lib/rails/application.rb:144:in `call'
+  rack (1.5.5) lib/rack/lock.rb:17:in `call'
+  rack (1.5.5) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.5) lib/rack/handler/webrick.rb:60:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  C:/RailsInstaller/Ruby2.0.0/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_route.html.erb (10.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered C:/RailsInstaller/Ruby2.0.0/lib/ruby/gems/2.0.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (252.4ms)
